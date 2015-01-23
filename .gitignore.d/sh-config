@@ -1,0 +1,11 @@
+*
+!.config/
+!.config/mr/
+!.config/mr/*
+!.config/mr/available.d/sh-config.vcsh
+!.config/mr/config.d/sh-config.vcsh
+!.config/mr/groups.d/sh-config
+!.cfg-post.d/
+!.cfg-post.d/sh-config*
+!.gitignore.d/
+!.gitignore.d/sh-config

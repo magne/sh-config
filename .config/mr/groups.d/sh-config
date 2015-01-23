@@ -1,0 +1,5 @@
+[$HOME/}/.zprezto]
+lib =
+    GIT_RECURSIVE=true
+    GITHUB_NAME=prezto
+checkout = github_clone
