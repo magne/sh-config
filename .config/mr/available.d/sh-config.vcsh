@@ -1,3 +1,0 @@
-[${XDG_CONFIG_HOME:-$HOME/.config}/vcsh/repo.d/sh-config.git]
-lib = VCSH_NAME="sh-config"
-include = cat $HOME/lib/vcsh/mr
