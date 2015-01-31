@@ -1,0 +1,14 @@
+#!/bin/bash
+
+[ -s "$HOME/.nvm/nvm.sh" ] && export NVM_DIR="$HOME/.nvm" && . "$HOME/.nvm/nvm.sh" # This loads nvm
+
+if [[ -d ~/.rvm/bin && ! $PATH =~ $HOME/\.rvm/bin ]]; then
+    export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+fi
+
+if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
+    source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+    if [[ -n "$PS1" ]]; then
+        [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
+    fi
+fi

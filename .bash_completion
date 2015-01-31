@@ -1,0 +1,18 @@
+#!/bin/bash
+
+_m2_settings()
+{
+    local cur prev opts base
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    opts=$(for f in `ls $HOME/.m2/settings-*.xml`; do x=${f/$HOME\/.m2\/settings-/}; if [ "${x/.xml/}" != "security" ]; then echo ${x/.xml/}; fi; done)
+
+    COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
+    return 0
+}
+complete -F _m2_settings m2-settings
+
+if [[ -f ${CHEF_HOME:-"$HOME/.chef"}/knife.completion ]]; then
+    . ${CHEF_HOME:-"$HOME/.chef"}/knife.completion
+fi
