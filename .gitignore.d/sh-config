@@ -9,3 +9,4 @@
 !/.gitignore.d
 !/.gitignore.d/sh-config
 !/.profile
+!/.tmux.conf
