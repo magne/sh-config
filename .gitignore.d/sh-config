@@ -6,7 +6,6 @@
 !/.bash_profile
 !/.bashrc
 !/.bash_wrap_aliases
-!/.gitignore.d
 !/.gitignore.d/sh-config
 !/.profile
 !/.tmux.conf
