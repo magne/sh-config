@@ -20,3 +20,8 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
+# set PATH to include go
+if [ -d /usr/local/go ]; then
+    PATH=$PATH:/usr/local/go/bin
+fi
