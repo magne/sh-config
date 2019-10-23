@@ -16,12 +16,17 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
+# set PATH to include local go
+if [ -d /usr/local/go ]; then
+    PATH="/usr/local/go/bin:$PATH"
+fi
+
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-# set PATH to include go
-if [ -d /usr/local/go ]; then
-    PATH=$PATH:/usr/local/go/bin
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
 fi
