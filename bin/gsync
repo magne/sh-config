@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+src=()
+args=()
+
+for arg in "$@"; do
+    shift
+    case "$arg" in
+        -h | -help | --help)
+            echo "Usage: ${0} [-h|-help|--help|--exclude-git] [rsync-options] SRC [SRC] DEST"
+            echo -e "\nExample: ${0} -avzh --progress  /home/magne /opt/backup"
+            exit 1
+            ;;
+        --exclude-git)
+            args+=('--exclude=.git')
+            ;;
+        -*)
+            set -- "$@" "$arg"
+            ;;
+        *)
+            src+=("$arg")
+            set -- "$@" "$arg"
+            ;;
+    esac
+done
+
+if [[ ${#src[@]} > 1 ]]; then
+    unset 'src[${#src[@]}-1]'
+fi
+
+rsync_filters=()
+for dir in "${src[@]}"; do
+    if [ -d "$dir" ]; then
+        for git_dir in $(find "$dir" -name '.git'); do
+            git_repo="$(dirname "$git_dir")"
+            rsync_filter="$git_repo/.rsync-filter"
+            git -C "$git_repo" ls-files --exclude-standard -oi --directory > "$rsync_filter"
+            rsync_filters+=("$rsync_filter")
+        done
+    fi
+done
+
+if [[ ${#rsync_filters[@]} > 0 ]]; then
+    args+=('--exclude=.rsync-filter')
+    args+=('--filter=:- .rsync-filter')
+fi
+
+args+=($@)
+
+echo rsync "${args[@]}"
+rsync "${args[@]}"
+
+if [[ ${#rsync_filters[@]} > 0 ]]; then
+    rm -f "${rsync_filters[@]}"
+fi
