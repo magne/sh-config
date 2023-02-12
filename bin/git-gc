@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+src=()
+args=()
+
+for arg in "$@"; do
+    shift
+    case "$arg" in
+        -h | -help | --help)
+            echo "Usage: ${0} [-h|-help|--help] [git gc options] SRC [SRC]"
+            exit 1
+            ;;
+        -*)
+            set -- "$@" "$arg"
+            ;;
+        *)
+            src+=("$arg")
+            set -- "$@" "$arg"
+            ;;
+    esac
+done
+
+if [[ ${#src[@]} == 0 ]]; then
+    src=($(pwd))
+fi
+
+for dir in "${src[@]}"; do
+    if [ -d "$dir" ]; then
+        for git_dir in $(find "$dir" -name '.git'); do
+            git_repo="$(dirname "$git_dir")"
+            echo -e "\ngit gc in $git_repo"
+            git -C "$git_repo" gc --aggressive --prune=now $args
+        done
+    fi
+done

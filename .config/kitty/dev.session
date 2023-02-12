@@ -1,0 +1,11 @@
+cd ~/development/corporater
+new_tab development
+layout tall
+launch
+launch
+launch
+
+cd ~
+new_tab system
+layout tall
+launch
