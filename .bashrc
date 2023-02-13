@@ -208,3 +208,5 @@ fi
 # up & down map to history search once a command has been started.
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
+
+[ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"

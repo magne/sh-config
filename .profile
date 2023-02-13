@@ -30,3 +30,5 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
+
+[ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
