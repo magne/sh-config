@@ -1,0 +1,16 @@
+[user]
+	email = magne.rasmussen@gmail.com
+	name = Magne Rasmussen
+
+[commit]
+	gpgsign = true
+
+[includeIf "gitdir:~/development/betr/"]
+	path = ~/development/betr/.gitconfig
+
+[includeIf "gitdir:~/development/dips/"]
+	path = ~/development/dips/.gitconfig
+
+[includeIf "gitdir:~/development/corporater/"]
+	path = ~/development/corporater/.gitconfig
+
