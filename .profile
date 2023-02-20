@@ -32,3 +32,5 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 [ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+
+[ -s "$HOME/.go/env" ] && source "$HOME/.go/env"
