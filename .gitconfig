@@ -2,6 +2,12 @@
 	email = magne.rasmussen@gmail.com
 	name = Magne Rasmussen
 
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
 [commit]
 	gpgsign = true
 
@@ -13,4 +19,3 @@
 
 [includeIf "gitdir:~/development/corporater/"]
 	path = ~/development/corporater/.gitconfig
-
