@@ -19,6 +19,7 @@
 
 [includeIf "gitdir:~/development/corporater/"]
 	path = ~/development/corporater/.gitconfig
+
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
