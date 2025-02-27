@@ -4,12 +4,38 @@
 
 [init]
 	defaultBranch = main
+[column]
+  ui = auto
+[branch]
+  sort = -committerdate
+[tag]
+  sort = version:refname
+[diff]
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
+[push]
+  default = simple
+  autoSetupRemote = true
+[fetch]
+  prune = true
+  pruneTags = true
+  all = true
 [pull]
 	rebase = true
 [rebase]
-	autoStash = true
+  autoSquash = true
+  autoStash = true
+  updateRefs = true
 [commit]
 	gpgsign = true
+  # verbose = true
+[rerere]
+  enabled = true
+  autoupdate = true
+[help]
+  autocorrect = prompt
 
 [includeIf "gitdir:~/development/betr/"]
 	path = ~/development/betr/.gitconfig
@@ -25,3 +51,5 @@
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+[advice]
+	addEmptyPathspec = false
